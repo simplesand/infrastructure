@@ -1,0 +1,22 @@
+services:
+  api:
+    container_name: dev1
+    build: ./dev1/
+    ports:
+       - "4000:5000"
+    volumes:
+       - type: volume
+         source: dev1-vol
+         target: /app
+  nodered:
+    container_name: node_red
+    image: nodered/node-red
+    ports:
+      - "2000:1880"
+    volumes:
+      - type: volume
+        source: nodered-vol
+        target: /data
+volumes:
+  dev1-vol: {}
+  nodered-vol: {}
